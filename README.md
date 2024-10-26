@@ -1,1 +1,122 @@
 # Serach_tabs-Project-Using-HTML-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Tabs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .tab {
+            display: inline-block;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+        }
+        .tab-content {
+            display: none;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .active {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Search Tabs</h1>
+
+    <div>
+        <div class="tab" onclick="openTab('youtube')">YouTube Search</div>
+        <div class="tab" onclick="openTab('googleImage')">Google Image Search</div>
+        <div class="tab" onclick="openTab('googleText')">Google Text Search</div>
+        <div class="tab" onclick="openTab('instagram')">Instagram Login</div>
+        <div class="tab" onclick="openTab('telegram')">Telegram Login</div>
+        <div class="tab" onclick="openTab('gmail')">Gmail Login</div>
+    </div>
+
+    <div id="youtube" class="tab-content">
+        <h2>YouTube Search</h2>
+        <input type="text" id="youtubeQuery" placeholder="Search YouTube...">
+        <button onclick="searchYouTube()">Search</button>
+    </div>
+
+    <div id="googleImage" class="tab-content">
+        <h2>Google Image Search</h2>
+        <input type="text" id="imageQuery" placeholder="Search Google Images...">
+        <button onclick="searchGoogleImages()">Search</button>
+    </div>
+
+    <div id="googleText" class="tab-content">
+        <h2>Google Text Search</h2>
+        <input type="text" id="textQuery" placeholder="Search Google...">
+        <button onclick="searchGoogleText()">Search</button>
+    </div>
+
+    <div id="instagram" class="tab-content">
+        <h2>Instagram Login</h2>
+        <form action="https://www.instagram.com/accounts/login/" method="post" target="_blank">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div id="telegram" class="tab-content">
+        <h2>Telegram Login</h2>
+        <form action="https://web.telegram.org/k/" method="get" target="_blank">
+            <button type="submit">Login to Telegram</button>
+        </form>
+    </div>
+
+    <div id="gmail" class="tab-content">
+        <h2>Gmail Login</h2>
+        <form action="https://accounts.google.com/ServiceLogin" method="get" target="_blank">
+            <button type="submit">Login to Gmail</button>
+        </form>
+    </div>
+
+    <script>
+        function openTab(tabName) {
+            // Hide all tab contents
+            var tabContents = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = 'none';
+            }
+
+            // Remove active class from all tabs
+            var tabs = document.getElementsByClassName('tab');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+
+            // Show the selected tab content
+            document.getElementById(tabName).style.display = 'block';
+            event.currentTarget.classList.add('active');
+        }
+
+        function searchYouTube() {
+            var query = document.getElementById('youtubeQuery').value;
+            window.open('https://www.youtube.com/results?search_query=' + encodeURIComponent(query), '_blank');
+        }
+
+        function searchGoogleImages() {
+            var query = document.getElementById('imageQuery').value;
+            window.open('https://www.google.com/search?tbm=isch&q=' + encodeURIComponent(query), '_blank');
+        }
+
+        function searchGoogleText() {
+            var query = document.getElementById('textQuery').value;
+            window.open('https://www.google.com/search?q=' + encodeURIComponent(query), '_blank');
+        }
+    </script>
+
+</body>
+</html>
